@@ -16,7 +16,7 @@ const modals = (state = [], action) => {
             });
         case types.CLOSE_LAST_MODAL:
             const lastIndex = state.length - 1;
-            return state.slice(lastIndex, 0);
+            return [ ...state.slice(0, lastIndex), ...state.slice(lastIndex + 1) ];
         default:
             return state;
     }

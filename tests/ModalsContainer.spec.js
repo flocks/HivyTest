@@ -4,6 +4,9 @@ import ModalsContainer from '../app/containers/ModalsContainer';
 import { Provider } from 'react-redux';
 import fakeStore from './helpers/fakeStore';
 
+jest.mock("../node_modules/react-datepicker/dist/react-datepicker.css", () => jest.fn());
+jest.mock("../app/styles/react-select.css", () => jest.fn());
+
 const zeroModalState = () => {
     return {
         modals: []
@@ -13,18 +16,11 @@ const zeroModalState = () => {
 const oneModalState = () => {
     return {
         modals: [{
-            modalId: 'cardPicker',
+            modalId: 'addProduct',
             data: {
                 street: 'flop'
             }
-        }],
-        cards: {
-            player1: [],
-            player2: [],
-            flop: [],
-            turn: {},
-            river: {}
-        }
+        }]
 
     };
 };
@@ -32,10 +28,8 @@ const oneModalState = () => {
 const oneModalWrongNameState = () => {
     return {
         modals: [{
-            modalId: 'cardPicker-wrong',
-            data: {
-                street: 'flop'
-            }
+            modalId: 'id_wrong',
+            data: {}
         }]
     };
 };
@@ -48,13 +42,13 @@ describe('<ModalContainers />', () => {
         expect(component.children().length).toBe(0);
     });
 
-    it('should render properly with the HandPicker in state', () => {
+    it('should render properly with the AddProductRequest in state', () => {
         const component = mount(
             <Provider store={fakeStore(oneModalState)}>
                 <ModalsContainer store={fakeStore(oneModalState)} />
             </Provider>
         );
-        expect(component.find('HandPicker').length).toBe(1);
+        expect(component.find('AddProductRequest').length).toBe(1);
     });
 
     it('should not render anything if modalId is wrong', () => {

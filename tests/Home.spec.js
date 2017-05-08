@@ -7,21 +7,15 @@ import { Provider } from 'react-redux';
 
 const getState = () => ({equities: {}});
 
+jest.mock("../node_modules/react-datepicker/dist/react-datepicker.css", () => jest.fn());
+ 
 describe('<Home />', () => {
-    it('should have 2 PlayerRow components', () => {
+    it('should display a UIButton', () => {
         const component = mount(
             <Home store={fakeStore(getState)}/>
         );
 
-        expect(component.find('PlayerRow').length).toBe(2);
-    });
-
-    it('should display a Board', () => {
-        const component = mount(
-            <Home store={fakeStore(getState)}/>
-        );
-
-        expect(component.find('Board').length).toBe(1);
+        expect(component.find('UIButton').length).toBe(1);
     });
 
     it('should map dispatch to props', () => {

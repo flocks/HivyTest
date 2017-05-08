@@ -54,4 +54,26 @@ describe('Reducers', () => {
             reducer(state, {type: types.CLOSE_MODAL, modalId: 'modalId'})
         ).toEqual(expected);
     });
+
+    it('should remove the last modal', () => {
+        const state =
+        [{
+            modalId: 'modalId',
+            data: {}
+        }, {
+            modalId: 'modalId2',
+            data: {}
+        }];
+
+        const expected =
+        [{
+            modalId: 'modalId',
+            data: {}
+        }];
+
+
+        expect(
+            reducer(state, {type: types.CLOSE_LAST_MODAL})
+        ).toEqual(expected);
+    });
 });

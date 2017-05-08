@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 import { zoomIn } from 'react-animations';
 import modalBinding from '../decorators/modalBinding';
 import { Creatable } from 'react-select';
@@ -82,7 +82,7 @@ class AddProductRequest extends React.Component {
         const isSubmitable = (valueToNull.length === 0 && this.state.product.label);
 
         return (
-            <div style={style.base}>
+            <StyleRoot style={style.base}>
                 <h3 style={ style.title }>What do you need?</h3>
                 <Creatable
                     name="form-field-name"
@@ -111,7 +111,7 @@ class AddProductRequest extends React.Component {
                         style={style.cancel}
                     />
                 </div>
-            </div>
+            </StyleRoot>
         );
     }
 }
@@ -133,8 +133,8 @@ const style = {
         margin: '200px auto',
         animation: 'x 200ms',
         animationName: Radium.keyframes(zoomIn, 'zoomIn'),
-        '@media (maxWidth: 600px)': {
-            width: '100%',
+        '@media (max-width: 600px)': {
+            width: '80%',
             margin: '70px auto'
         }
     },
