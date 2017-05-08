@@ -1,0 +1,4 @@
+export const OPEN_MODAL = 'OPEN_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
+export const CLOSE_LAST_MODAL = 'CLOSE_LAST_MODAL';
+export const CREATE_REQUEST = 'CREATE_REQUEST';
