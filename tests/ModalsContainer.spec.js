@@ -17,9 +17,7 @@ const oneModalState = () => {
     return {
         modals: [{
             modalId: 'addProduct',
-            data: {
-                street: 'flop'
-            }
+            data: {}
         }]
 
     };
